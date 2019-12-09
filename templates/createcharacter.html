@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Character
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here you can create a new character within your world!
+        <br/>
+        <li>Enter your character's attributes. You may enter N/A, but you must enter text in every field (except for Notes).</li>
+        <li>You will be able to assign characters to stories when you create those stories!</li>
+    </p>
+    <br/>
+    <form action="/createcharacter" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control-2" name="name" placeholder="Name" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="highlights" placeholder="Key attributes/characteristics" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="bday" placeholder="Birthday" type="date">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="gender" placeholder="Gender" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="nateth" placeholder="Nationality/ethnicity" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="home" placeholder="Place of origin" type="text">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="phys" placeholder="Physical description"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="pers" placeholder="Personality"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="job" placeholder="Career/position"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="acts" placeholder="Skills/talents/hobbies"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="notes" placeholder="Notes (optional)"></textarea>
+        </div>
+        <button class="button" type="submit">Create your character!</button>
+    </form>
+{% endblock %}

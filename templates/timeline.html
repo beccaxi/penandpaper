@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Timeline
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here you can insert a new entry into your world's timeline!
+        <br/>
+        <li>Enter an event and its date (both fields are required).</li>
+        <li>Check any characters or stories that feature in your entry. (Go ahead and create those characters/stories before updating your timeline!)</li>
+        <li style="font-style: italic">Coming soon: ability to edit/delete existing timeline entries!</li>
+    </p>
+    <form action="/timeline" method="post">
+        <div class="form-group">
+            <textarea autocomplete="off" autofocus class="form-control-4" name="event" placeholder="Event"></textarea>
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="date" placeholder="Date" type="date">
+        </div>
+        <br/>
+        <p>
+            Select any characters that feature in your entry!
+        </p>
+        <div>
+            {% for character in characters %}
+            <input type="checkbox" name="{{ character["name"] }}" value="1"> {{ character["name"] }}
+            <br/>
+            {% endfor %}
+        </div>
+        <br/>
+        <p>
+            Select any stories that feature in your entry!
+        </p>
+        <div>
+            {% for story in stories %}
+            <input type="checkbox" name="{{ story["title"] }}" value="1"> {{ story["title"] }}
+            <br/>
+            {% endfor %}
+        </div>
+        <br/>
+        <button class="button" type="submit">Add entry to timeline!</button>
+    </form>
+{% endblock %}

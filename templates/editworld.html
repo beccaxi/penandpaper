@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit World
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here you may make changes to your world! Make sure to save your changes.
+        <br/>
+        (Username and password cannot be changed.)
+    </p>
+    {% for world in world %}
+    <form action="/editworld" method="post">
+        </p>
+        <div class="form-group">
+            <input class="form-control-2" name="worldname" value="{{ world["worldname"] }}" placeholder="World name (i.e. Earth, LOTR, my story hub)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="location" value="{{ world["location"] }}" placeholder="World location (i.e. New York, Middle-earth, my writers-blocked brain)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="timeperiod" value="{{ world["timeperiod"] }}" placeholder="World time period (i.e. Victorian era, once upon a time, 2020)" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control-3" name="genre">
+                <option selected="{{ world["genre"] }}">{{ world["genre"] }}</option>
+                    <option>Crime</option>
+                    <option>Fantasy</option>
+                    <option>Romance</option>
+                    <option>Sci-fi</option>
+                    <option>Western</option>
+                    <option>Inspirational</option>
+                    <option>Historical</option>
+                    <option>Horror</option>
+                    <option>Fanfic</option>
+                    <option>Other</option>
+                    <option>N/A</option>
+            </select>
+        </div>
+        <button class="button" type="submit">Save changes</button>
+    </form>
+    {% endfor %}
+
+    <br/>
+    <br/>
+
+    <p>
+        You may also delete your world. This cannot be undone.
+    </p>
+    <form action="/deleteworld" method="post">
+        <button class="button" type="submit">Delete world forever</button>
+    </form>
+{% endblock %}

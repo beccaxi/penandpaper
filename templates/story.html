@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Story
+{% endblock %}
+
+{% block main %}
+    <!-- from https://getbootstrap.com/docs/4.0/components/jumbotron/ -->
+    <div class="html">
+    <div class="jumbotron">
+        <h1 class="lead-1">{{ story["title"] }}</h1>
+        <p class="lead-2">
+            {{ story["abstract"] }}
+        </p>
+        <hr class="lead-3">
+        <p class="lead-3">
+            Location: {{ story["location"] }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Time period: {{ story["time"] }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Genre: {{ story["genre"] }}
+            <br/>
+            <br/>
+            {{ story["notes"] }}
+            <br/>
+            <br/>
+            <p class="small text-center text-muted">
+                Story created {{ story["timestamp"] }}.
+                <br/>
+                <br/>
+                <a class="link" href="/editstory?title={{ story["title"] }}">Edit your story here</a>
+            </p>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h1>Story outline:</h1>
+            <div class="box">
+                {{ story["outline"] }}
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="column">
+            <h1>Characters:</h1>
+            <br/>
+            {% for character in characters %}
+                <li><a class="link-2" href="/character?name={{ character["name"] }}">{{ character["name"] }}</a></li>
+            {% endfor %}
+            <br/>
+            <br/>
+            <h1>Timeline:</h1>
+            <div class="info">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="html">
+                            <th scope="col">Date</th>
+                            <th scope="col">Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in timeline %}
+                        <tr>
+                            <td>{{ entry["date"] }}</td>
+                            <td>{{ entry["event"] }}</td>
+                        </tr>
+                        <br/>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <div>
+        {% if story["link"] != '' %}
+        Access Google Doc here: <a href="{{ story["link"] }}">{{ story["link"] }}</a>
+        {% else %}
+        {% endif %}
+        <br/>
+        <br/>
+        {% if story["link"] != '' %}
+            Or edit it here directly!
+            <br/>
+            <br/>
+            <iframe src="{{ story["link"] }}" height="400" width="1000"></iframe>
+            {% else %}
+        {% endif %}
+        <br/>
+        <br/>
+        {% if story["embed"] != '' %}
+            Perhaps you'd like to view it:
+            <br/>
+            <br/>
+            <iframe src="{{ story["embed"] }}" height="400" width="1000"></iframe>
+            {% else %}
+        {% endif %}
+    </div>
+
+    <br/>
+    <br/>
+
+    </div>
+{% endblock %}

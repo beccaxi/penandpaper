@@ -1,0 +1,95 @@
+
+	Website:
+	    - User accounts: register, log in, log out
+	    - Register [essentially registering a new world, which means that sharing a username and password with someone else is sharing edit access]:
+	      create new world
+	        - Create new: name, location, time period, genre
+
+	    - Within world:
+	        - World homepage: load from all databases (pull world ids)
+	            - Navbar:
+	            	- Create story
+	            	- Create character
+	            	- Timeline
+	        	- [TOP] World basic info (pull from worlds database)
+	            - Top right: Edit World (UPDATE query in worlds database)
+	            	- can delete as well as edit
+				- [LEFT] Story index - hyperlink to story pages
+				- [Right] Character index - hyperlink to character bio pages
+				- [Bottom] Timeline (automatically sort by date - ORDER BY date)
+					- hyperlink to character and/or story pages, if applicable (SELECT   FROM charactertimeline...FROM storytimeline WHERE timeline_id = :timeline_id)
+
+	        - (Hyperlink - GET) Character bio page
+	        	- Character timeline (SELECT from charactertimeline)
+	        	- Character profile
+	        	- Stories (can hyperlink to story page(s)) (SELECT from storycharacters)
+	        	- Edit character (/edit and /delete)
+
+	        - (Hyperlink - GET) Story page
+	        	- Option to link/embed google doc
+	        	- Story timeline (SELECT from storytimeline)
+	        	- Characters list (can hyperlink to character bio page(s) - SELECT name FROM characters WHERE storyid IS (id FROM stories))
+				- Edit story (/edit and /delete)
+
+			- Timeline page (automatically sort by date)
+				- event
+				- date
+				- select character(s) from checklist (check boxes!)
+				- select story(s) from checklist (check boxes!)
+
+			TODO:
+			- make EDIT WORLD dropdown automatically sit on previously selected value
+
+
+database for CHARACTER/STORY
+database for CHARACTER/TIMELINE
+database for STORY/TIMELINE
+
+database for TIMELINE with world ids
+	PRIMARY timeline entry id
+	event
+	date
+	REFERENCE world_id
+	timestamp
+database for all characters with world ids
+	PRIMARY character id
+	name
+	key characteristics ("highlights")
+	gender
+	birthday ("bday")
+	nationality/ethnicity ("nateth")
+	physical description ("phys")
+	personality ("pers")
+	hobbies/talents ("acts")
+	career ("job")
+	home
+	notes ("other")
+	REFERENCE world_id
+	REFERENCE story_id
+	timestamp
+database for all stories with world ids
+	PRIMARY story id
+	title
+	abstract
+	location
+	time
+	notes
+	genre
+	link
+	outline
+	REFERENCE world_id
+	timestamp
+database for all users/worlds
+	PRIMARY (world) id
+	username
+	hashed password
+	worldname
+	location
+	time period
+	genre
+	timestamp
+
+
+	Style
+	    - make and upload favicon.ico
+	    - modify styles.css as I see fit

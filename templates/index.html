@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portal
+{% endblock %}
+
+{% block main %}
+    <!-- from https://getbootstrap.com/docs/4.0/components/jumbotron/ -->
+    <div class="jumbotron">
+        {% for world in world %}
+        <h1 class="lead-1">Welcome to {{ world["worldname"] }}, {{ world["username"] }}!</h1>
+        <p class="lead-2">
+            Location: {{ world["location"] }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Time period: {{ world["timeperiod"] }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Genre: {{ world["genre"] }}
+        </p>
+        <hr class="lead-3">
+        <p class="lead-3">
+            pen&paper is a simple story planning and organizational tool that can serve as a repository for your characters, stories, and timelines.
+            If you're just getting started, please be aware that it's best to first create characters, then stories, and then timeline entries, in that order.
+            <br/>
+            <br/>
+            For support, contact the admin <a href="mailto:rebeccaxi@college.harvard.edu">here</a>.
+            <br/>
+            <br/>
+            <p class="small text-center text-muted">
+                World created {{ world["timestamp"] }}.
+            </p>
+        </p>
+        {% endfor %}
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="column-index">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="lead-2">
+                            <th scope="colgroup">Stories</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="colspan=2">Summary</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for story in stories %}
+                        <tr>
+                            <td><a class="link" href="/story?title={{ story["title"] }}">{{ story["title"] }}</a></td>
+                            <td scope="colspan=2">{{ story["abstract"] }}</td>
+                            <td></td>
+                            <br/>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="column-index">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="lead-2">
+                            <th scope="colgroup">Characters</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="colspan=2">Highlights</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for character in characters %}
+                        <tr>
+                            <td><a class="link" href="/character?name={{ character["name"] }}">{{ character["name"] }}</a></td>
+                            <td scope="colspan=2">{{ character["highlights"] }}</td>
+                            <td></td>
+                            <br/>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br/>
+            <div class="info">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="lead-2">
+                            <th scope="colgroup">Timeline</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Date (year/month/day)</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Stories, if any</th>
+                            <th scope="col">Characters, if any</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in timeline %}
+                        <tr>
+                            <td>{{ entry["date"] }}</td>
+                            <td>{{ entry["event"] }}</td>
+                            <td>{{ entry["stories"] }} </td>
+                            <td>{{ entry["chars"] }} </td>
+                        </tr>
+                        <br/>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

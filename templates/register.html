@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <p>
+        Welcome to pen&paper! By registering, you are creating a portal for your new world! A few things to note:
+        <br/>
+        <li>Your password must contain at least six (6) letters and two (2) numbers.</li>
+        <li>You may share your username and password with others to grant them edit access to your world portal.</li>
+        <li>You may register again and again to create as many world portals as you would like!</li>
+    </p>
+    <br/>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control-1" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-1" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control-1" name="confirmation" placeholder="Confirm password" type="password">
+        </div>
+        <p>
+            <br/>
+            Now, please enter some basic information for your world portal!
+            <br/>
+        </p>
+        <div class="form-group">
+            <input class="form-control-2" name="worldname" placeholder="World name (i.e. Earth, LOTR, my story hub)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="location" placeholder="World location (i.e. New York, Middle-earth, my writers-blocked brain)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="timeperiod" placeholder="World time period (i.e. Victorian era, once upon a time, 2020)" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control-3" name="genre">
+                <option disabled selected value="">Genre</option>
+                    <option>Crime</option>
+                    <option>Fantasy</option>
+                    <option>Romance</option>
+                    <option>Sci-fi</option>
+                    <option>Western</option>
+                    <option>Inspirational</option>
+                    <option>Historical</option>
+                    <option>Horror</option>
+                    <option>Fanfic</option>
+                    <option>Other</option>
+                    <option>N/A</option>
+            </select>
+        </div>
+        <button class="button" type="submit">Register and create your world!</button>
+    </form>
+{% endblock %}

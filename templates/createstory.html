@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Story
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here you can create a new story within your world!
+        <br/>
+        <li>Enter your story's title, a short summary, location and time (optional), and any other notes relevant to your story.</li>
+        <li>Check any characters that feature in your story. (Go ahead and create those characters before creating your story!)</li>
+        <li>You may submit a link (ending in /edit) to the Google Doc containing your story, if one exists! You may also embed the doc by publishing it to the web and submitting that link (ending in /pub).</li>
+        <li>Lastly, enter your story's outline. You may enter N/A, but you must enter some text.</li>
+    </p>
+    <br/>
+    <form action="/createstory" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control-2" name="title" placeholder="Story title" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="abstract" placeholder="Story abstract" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="location" placeholder="Location (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="time" placeholder="Time period (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control-3" name="genre">
+                <option disabled selected value="">Genre</option>
+                    <option>Crime</option>
+                    <option>Fantasy</option>
+                    <option>Romance</option>
+                    <option>Sci-fi</option>
+                    <option>Western</option>
+                    <option>Inspirational</option>
+                    <option>Historical</option>
+                    <option>Horror</option>
+                    <option>Fanfic</option>
+                    <option>Other</option>
+                    <option>N/A</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="link" placeholder="Link to document, as in /edit (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="embed" placeholder="Embed document, as in /pub (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="notes" placeholder="Notes (optional)"></textarea>
+        </div>
+        <br/>
+        <p>
+            Select any characters that feature in your story!
+        </p>
+        <div>
+            {% for character in characters %}
+            <input type="checkbox" name="{{ character["name"] }}" value="1"> {{ character["name"] }}
+            <br/>
+            {% endfor %}
+        </div>
+        <br/>
+        <div class="form-group">
+            <textarea class="form-control-5" name="outline" placeholder="Outline"></textarea>
+        </div>
+        <button class="button" type="submit">Create your story!</button>
+    </form>
+{% endblock %}

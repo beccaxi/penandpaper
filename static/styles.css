@@ -1,0 +1,212 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+    font-family: "papyrus", fantasy;
+}
+
+/* colors for brand */
+nav .navbar-brand .gold
+{
+    color: #a4893d;
+}
+nav .navbar-brand .lightgold
+{
+    color: #e4decd;
+}
+nav .navbar-brand .white
+{
+    color: #ffffff;
+}
+
+#navbar
+{
+    font-family: "verdana", sans-serif;
+    font-size: 13px;
+}
+
+main .form-control-1
+{
+    display: inline-block;
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main .form-control-2
+{
+    display: inline-block;
+    width: 550px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main .form-control-3
+{
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main .form-control-4
+{
+    display: inline-block;
+    width: 550px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+main .form-control-5
+{
+    display: inline-block;
+    width: 550px;
+    height: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+main .button
+{
+    color: #a4893d;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+
+    /* background-color: #bd8c7d; */
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main .lead-1
+{
+    font-family: "papyrus", fantasy;
+    text-align: center;
+    font-size: 50px;
+}
+
+main .lead-2
+{
+    font-family: "papyrus", fantasy;
+    text-align: center;
+    font-size: 20px;
+}
+
+main .lead-3
+{
+    font-family: "verdana", sans-serif;
+    font-size: 15px;
+}
+
+.container
+{
+    column-gap: 100px;
+}
+
+.column
+{
+    float: left;
+    width: 48%;
+}
+
+.column-index
+{
+    float: left;
+    width: 48%;
+    display: flex;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px)
+{
+    .column
+    {
+        width: 100%;
+    }
+}
+
+main .link
+{
+    color: #303030;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+main .link-2
+{
+    color: #303030;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+a:hover
+{
+    color: #a4893d;
+    text-decoration: none;
+}
+
+thead
+{
+    font-family: "papyrus", fantasy;
+    font-weight: bold;
+}
+
+h1
+{
+    font-size: 20px;
+}
+
+table
+{
+    text-align: left;
+}
+
+li
+{
+    text-align: left;
+}
+
+footer
+{
+    font-family: "verdana", sans-serif;
+    padding-bottom: 50px;
+}
+
+.html
+{
+    font-family: "verdana", sans-serif;
+}
+
+.box
+{
+    text-align: left;
+    border: 1px solid gray;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    white-space: pre-wrap;
+}
+
+.preserveformat
+{
+    white-space: pre-wrap;
+}
+
+.info
+{
+    display: flex;
+}

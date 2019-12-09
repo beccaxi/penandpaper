@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Story
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here you may make changes to your story! Make sure to save your changes.
+        <br/>
+    </p>
+    <form action="/editstory" method="post">
+        <div class="form-group">
+            <input type="hidden" name="id" value="{{ story["id"] }}">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control-2" name="title" value="{{ story["title"] }}" placeholder="Story title" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="abstract" value="{{ story["abstract"] }}" placeholder="Story abstract" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="location" value="{{ story["location"] }}" placeholder="Location (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="time" value="{{ story["time"] }}" placeholder="Time period (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control-3" name="genre">
+                <option selected="{{ story["genre"] }}">{{ story["genre"] }}</option>
+                    <option>Crime</option>
+                    <option>Fantasy</option>
+                    <option>Romance</option>
+                    <option>Sci-fi</option>
+                    <option>Western</option>
+                    <option>Inspirational</option>
+                    <option>Historical</option>
+                    <option>Horror</option>
+                    <option>Fanfic</option>
+                    <option>Other</option>
+                    <option>N/A</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="link" value="{{ story["link"] }}" placeholder="Link to document, as in /edit (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control-2" name="embed" value="{{ story["embed"] }}" placeholder="Embed document, as in /pub (optional)" type="text">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control-4" name="notes" placeholder="Notes (optional)">{{ story["notes"] }}</textarea>
+        </div>
+        <br/>
+        <p>
+            RESELECT any characters that are relevant to your story!
+        </p>
+        <div>
+            {% for character in characters %}
+            <input type="checkbox" name="{{ character["name"] }}" value="1"> {{ character["name"] }}
+            <br/>
+            {% endfor %}
+        </div>
+        <br/>
+        <div class="form-group">
+            <textarea class="form-control-5" name="outline" value="{{ story["outline"] }}" placeholder="Outline">{{ story["outline"] }}</textarea>
+        </div>
+        <button class="button" type="submit">Save changes</button>
+    </form>
+
+    <br/>
+    <br/>
+
+    <p>
+        You may also delete your story. This cannot be undone.
+    </p>
+    <form action="/deletestory" method="post">
+        <div class="form-group">
+            <input type="hidden" name="id" value="{{ story["id"] }}">
+        </div>
+        <button class="button" type="submit">Delete story forever</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Character
+{% endblock %}
+
+{% block main %}
+    <!-- from https://getbootstrap.com/docs/4.0/components/jumbotron/ -->
+    <div class="html">
+    <div class="jumbotron">
+        <h1 class="lead-1">{{ character["name"] }}</h1>
+        <p class="lead-2">
+            {{ character["highlights"] }}
+        </p>
+        <hr class="lead-3">
+        <p class="lead-3">
+            <div class="preserveformat">
+                {{ character["other"] }}
+            </div>
+            <p class="small text-center text-muted">
+                Character created {{ character["timestamp"] }}.
+                <br/>
+                <br/>
+                <a class="link" href="/editcharacter?name={{ character["name"] }}">Edit your character here</a>
+            </p>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h1>Character profile:</h1>
+            <table class="table table-hover table-striped">
+                <br/>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ character["name"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of birth</td>
+                        <td>{{ character["bday"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{{ character["gender"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nationality/ethnicity</td>
+                        <td>{{ character["nateth"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Place of origin</td>
+                        <td>{{ character["home"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Physical description</td>
+                        <td>{{ character["phys"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Personality</td>
+                        <td>{{ character["pers"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Career/position</td>
+                        <td>{{ character["job"] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Skills/talents/hobbies</td>
+                        <td>{{ character["acts"] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="column">
+            <h1>Stories:</h1>
+            <br/>
+            {% for story in stories %}
+                <li><a class="link-2" href="/story?title={{ story["title"] }}">{{ story["title"] }}</a></li>
+            {% endfor %}
+            <br/>
+            <br/>
+            <h1>Timeline:</h1>
+            <div class="info">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="html">
+                            <th scope="col">Date</th>
+                            <th scope="col">Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in timeline %}
+                        <tr>
+                            <td>{{ entry["date"] }}</td>
+                            <td>{{ entry["event"] }}</td>
+                        </tr>
+                        <br/>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
